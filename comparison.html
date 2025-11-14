@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Comparison - Weather App</title>
+    <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-black text-white">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="#"><i class="bi bi-cloud-haze2-fill"></i> Weather</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a onclick="location.reload()" id="home" class="nav-link active text-white hov" aria-current="page" href="wether.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white hov" href="about_us.html">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white hov" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white hov" href="favorites.html">Favorites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white hov" href="comparison.html">Comparison</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white hov" href="feedback.html">Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white hov" href="settings.html">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white hov" href="alerts.html">Alerts</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white hov" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Join us</a>
+                        <ul class="dropdown-menu bg-black">
+                            <li><a class="dropdown-item text-white" href="signup.html">Sign up</a></li>
+                            <li><a class="dropdown-item text-white" href="login.html">Login</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input id="input" class="form-control me-2" type="search" placeholder="Search city" aria-label="Search">
+                    <button id="search" class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Comparison Content -->
+    <div class="container mt-5">
+        <h2 class="text-white text-center mb-4">Weather Comparison</h2>
+
+        <!-- Selection Form -->
+        <div class="card border-2 border-white rounded-5 mb-4" style="background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.7) 50%);">
+            <div class="card-body text-white">
+                <h5 class="card-title">Select Cities to Compare</h5>
+                <form id="comparisonForm">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label for="city1" class="form-label">City 1</label>
+                            <input type="text" class="form-control" id="city1" placeholder="Enter first city" required>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="city2" class="form-label">City 2</label>
+                            <input type="text" class="form-control" id="city2" placeholder="Enter second city" required>
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button type="submit" class="btn btn-success w-100">Compare</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Comparison Results -->
+        <div class="row" id="comparisonResults" style="display: none;">
+            <div class="col-md-6">
+                <div class="card border-2 border-white rounded-5" style="background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.7) 50%);">
+                    <div class="card-body text-white">
+                        <h5 class="card-title" id="city1Name">City 1</h5>
+                        <p>Temp: <span id="city1Temp">-</span></p>
+                        <p>Humidity: <span id="city1Humidity">-</span></p>
+                        <p>Wind: <span id="city1Wind">-</span></p>
+                        <div class="progress mb-2">
+                            <div class="progress-bar bg-success" id="city1TempBar" style="width: 0%"></div>
+                        </div>
+                        <small>Temp Comparison</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-2 border-white rounded-5" style="background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.7) 50%);">
+                    <div class="card-body text-white">
+                        <h5 class="card-title" id="city2Name">City 2</h5>
+                        <p>Temp: <span id="city2Temp">-</span></p>
+                        <p>Humidity: <span id="city2Humidity">-</span></p>
+                        <p>Wind: <span id="city2Wind">-</span></p>
+                        <div class="progress mb-2">
+                            <div class="progress-bar bg-info" id="city2TempBar" style="width: 0%"></div>
+                        </div>
+                        <small>Temp Comparison</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('comparisonForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const city1 = document.getElementById('city1').value;
+            const city2 = document.getElementById('city2').value;
+
+            // Simulate API calls for weather data
+            fetchWeather(city1, 'city1');
+            fetchWeather(city2, 'city2');
+
+            document.getElementById('comparisonResults').style.display = 'flex';
+        });
+
+        function fetchWeather(city, prefix) {
+            // Simulate weather API response
+            const mockData = {
+                temp: Math.floor(Math.random() * 30) + 10,
+                humidity: Math.floor(Math.random() * 50) + 50,
+                wind: Math.floor(Math.random() * 20) + 5
+            };
+
+            document.getElementById(`${prefix}Name`).textContent = city;
+            document.getElementById(`${prefix}Temp`).textContent = `${mockData.temp}°C`;
+            document.getElementById(`${prefix}Humidity`).textContent = `${mockData.humidity}%`;
+            document.getElementById(`${prefix}Wind`).textContent = `${mockData.wind} km/h`;
+
+            // Update progress bars for comparison
+            const tempBar = document.getElementById(`${prefix}TempBar`);
+            tempBar.style.width = `${(mockData.temp / 40) * 100}%`; // Assuming max 40°C
+        }
+    </script>
+</body>
+</html>

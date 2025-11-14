@@ -1,0 +1,212 @@
+.navbar-toggler-icon {
+    background-color: white !important;
+  }
+
+  body {
+    background: linear-gradient( to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%
+      ),
+      url(img2.jpg);
+    background-size: cover;
+  }
+
+ .hov{
+  transition: ease-in-out 0.3s !important;
+ }
+
+ .hov:hover{
+  color: rgb(5, 188, 5) !important;
+ }
+
+ #input{
+  border: 3px solid black !important;
+  transition: ease-in-out 0.3s !important;
+ }
+
+ #input:hover{
+  border: 3px solid rgb(5, 188, 5) !important;
+ }
+
+
+.img{
+  width: 100%;
+  max-width: 400px;
+  object-fit: cover;
+  vertical-align:middle;
+}
+
+.wrapper{
+  padding: 0 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 3rem;
+  line-height: 1.9;
+  margin-top: 40px;
+
+}
+.wrapper2{
+  padding: 0 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 3rem;
+  flex-direction: row-reverse;
+  margin-top: 40px;
+  line-height: 1.9;
+}
+.intro{
+  flex: 1;
+  text-align: center;
+}
+
+.log-con{
+  width: 30%;
+}
+.log-con-img{
+  padding: 12px;
+  object-fit: contain;
+}
+
+.log-con-form{
+  width: 50%;
+}
+
+.dropdown-item{
+  transition: ease-in-out 0.3s !important;
+}
+
+.dropdown-item:hover{
+  color: rgb(5, 188, 5) !important;
+  background-color: #171717 !important;
+}
+
+.success{
+  color: rgb(5, 188, 5) !important;
+
+}
+
+/* CSS Variables for Theme */
+:root {
+    --text-color: #ffffff; /* Default dark */
+    --bg-color: #000000;
+    --card-bg: rgba(0, 0, 0, 0.7);
+    --border-color: #ffffff;
+    --button-bg: #28a745;
+    --button-text: #ffffff;
+    --navbar-bg: #000000;
+    --navbar-text: #ffffff;
+    --input-bg: #333333;
+    --input-border: #ffffff;
+    --dropdown-bg: #000000;
+    --dropdown-text: #ffffff;
+}
+
+/* Smooth transitions for theme changes */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Update body to use variables, keep background image */
+body {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(img2.jpg);
+    background-size: cover;
+    color: var(--text-color);
+}
+
+/* Navbar updates */
+.navbar {
+    background-color: var(--navbar-bg) !important;
+}
+.navbar .nav-link, .navbar-brand {
+    color: var(--navbar-text) !important;
+}
+.navbar-toggler-icon {
+    background-color: var(--navbar-text) !important;
+}
+
+/* Input updates */
+#input {
+    background-color: var(--input-bg) !important;
+    color: var(--text-color) !important;
+    border: 3px solid var(--input-border) !important;
+}
+#input:hover {
+    border: 3px solid rgb(5, 188, 5) !important;
+}
+
+/* Card updates */
+.card {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+}
+.card-body {
+    color: var(--text-color) !important;
+}
+
+/* Button updates */
+.btn {
+    background-color: var(--button-bg) !important;
+    color: var(--button-text) !important;
+    border-color: var(--button-bg) !important;
+}
+
+/* Dropdown updates */
+.dropdown-menu {
+    background-color: var(--dropdown-bg) !important;
+}
+.dropdown-item {
+    color: var(--dropdown-text) !important;
+}
+.dropdown-item:hover {
+    color: rgb(5, 188, 5) !important;
+    background-color: var(--dropdown-bg) !important;
+}
+
+/* Other elements */
+.hov:hover {
+    color: rgb(5, 188, 5) !important;
+}
+.success {
+    color: rgb(5, 188, 5) !important;
+}
+
+/* Form elements */
+.form-control {
+    background-color: var(--input-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--input-border) !important;
+}
+.form-control:focus {
+    background-color: var(--input-bg) !important;
+    color: var(--text-color) !important;
+    border-color: rgb(5, 188, 5) !important;
+    box-shadow: none !important;
+}
+
+/* Table elements */
+.table {
+    color: var(--text-color) !important;
+}
+.table-dark {
+    background-color: var(--dropdown-bg) !important;
+    color: var(--dropdown-text) !important;
+}
+.table-dark th, .table-dark td {
+    background-color: var(--dropdown-bg) !important;
+    color: var(--dropdown-text) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Alert elements */
+.alert {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+.alert-success {
+    background-color: rgba(40, 167, 69, 0.1) !important;
+    color: #28a745 !important;
+    border-color: #28a745 !important;
+}
