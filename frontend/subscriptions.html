@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Alert Subscriptions - Weather App</title>
+    <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="theme.js"></script>
+</head>
+<body>
+    <!-- Back Button -->
+    <button onclick="history.back()" class="btn btn-primary position-fixed top-0 start-0 m-3 z-index-1050">
+      <i class="bi bi-arrow-left"></i> Back
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="bi bi-cloud-haze2-fill"></i> Weather</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link hov" href="wether.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link hov" href="about_us.html">About us</a></li>
+                    <li class="nav-item"><a class="nav-link hov" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link hov" href="favorites.html">Favorites</a></li>
+                    <li class="nav-item"><a class="nav-link hov" href="comparison.html">Comparison</a></li>
+                    <li class="nav-item"><a class="nav-link hov" href="feedback.html">Feedback</a></li>
+                    <li class="nav-item"><a class="nav-link hov" href="settings.html">Settings</a></li>
+                    <li class="nav-item"><a class="nav-link hov" href="alerts.html">Alerts</a></li>
+                    <li class="nav-item"><a class="nav-link hov" href="forecast.html">Forecast</a></li>
+                    <li class="nav-item"><a class="nav-link hov" href="maps.html">Maps</a></li>
+                    <li class="nav-item"><a class="nav-link hov" href="history.html">History</a></li>
+                    <li class="nav-item"><a class="nav-link hov" href="tips.html">Tips</a></li>
+                    <li class="nav-item"><a class="nav-link active hov" href="subscriptions.html">Subscriptions</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle hov" href="#" data-bs-toggle="dropdown">Join us</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="signup.html">Sign up</a></li>
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="btn btn-outline-primary">Light Mode</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h2 class="text-white text-center mb-4">Weather Alert Subscriptions</h2>
+
+        <!-- Subscription Form -->
+        <div class="card border-white rounded-4 mb-4" style="background: linear-gradient(to top, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.7) 50%);">
+            <div class="card-body text-white">
+                <h5 class="card-title"><i class="bi bi-bell me-2"></i>Create New Subscription</h5>
+                <form id="subscription-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="sub-city" class="form-label">City</label>
+                            <input type="text" id="sub-city" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="sub-email" class="form-label">Email</label>
+                            <input type="email" id="sub-email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label for="alert-types" class="form-label">Alert Types</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="severe-storms" value="severe-storms">
+                                <label class="form-check-label" for="severe-storms">Severe Storms</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="heat-wave" value="heat-wave">
+                                <label class="form-check-label" for="heat-wave">Heat Wave</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cold-snap" value="cold-snap">
+                                <label class="form-check-label" for="cold-snap">Cold Snap</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="heavy-rain" value="heavy-rain">
+                                <label class="form-check-label" for="heavy-rain">Heavy Rain</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="frequency" class="form-label">Frequency</label>
+                            <select id="frequency" class="form-select">
+                                <option value="immediate">Immediate</option>
+                                <option value="daily">Daily Summary</option>
+                                <option value="weekly">Weekly Summary</option>
+                            </select>
+                            <div class="form-check mt-3">
+                                <input class="form-check-input" type="checkbox" id="sms-alerts" value="sms">
+                                <label class="form-check-label" for="sms-alerts">SMS Alerts (additional)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success mt-3">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Active Subscriptions -->
+        <div class="card border-white rounded-4 mb-4" style="background: linear-gradient(to top, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.7) 50%);">
+            <div class="card-body text-white">
+                <h5 class="card-title"><i class="bi bi-list-check me-2"></i>Your Active Subscriptions</h5>
+                <div id="subscriptions-list">
+                    <p>No active subscriptions. Create one above!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert History -->
+        <div class="card border-white rounded-4" style="background: linear-gradient(to top, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.7) 50%);">
+            <div class="card-body text-white">
+                <h5 class="card-title"><i class="bi bi-clock-history me-2"></i>Recent Alerts</h5>
+                <div id="alert-history">
+                    <div class="alert alert-info">
+                        <strong>Heat Wave Alert:</strong> Temperatures expected to exceed 35°C in Mumbai for the next 3 days.
+                        <br><small class="text-muted">Sent 2 hours ago</small>
+                    </div>
+                    <div class="alert alert-warning">
+                        <strong>Heavy Rain Warning:</strong> Expect 50-100mm rainfall in Delhi today.
+                        <br><small class="text-muted">Sent 1 day ago</small>
+                    </div>
+                    <div class="alert alert-danger">
+                        <strong>Storm Alert:</strong> Severe thunderstorm expected in Bangalore tonight.
+                        <br><small class="text-muted">Sent 3 days ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="subscriptions.js"></script>
+</body>
+</html>

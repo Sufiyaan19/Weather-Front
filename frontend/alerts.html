@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Alerts - Weather App</title>
+    <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="theme.js"></script>
+</head>
+<body>
+    <!-- Back Button -->
+    <button onclick="history.back()" class="btn btn-primary position-fixed top-0 start-0 m-3 z-index-1050">
+      <i class="bi bi-arrow-left"></i> Back
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="bi bi-cloud-haze2-fill"></i> Weather</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a onclick="location.reload()" id="home" class="nav-link active hov" aria-current="page" href="wether.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hov" href="about_us.html">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hov" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hov" href="favorites.html">Favorites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hov" href="comparison.html">Comparison</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hov" href="feedback.html">Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hov" href="settings.html">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hov" href="alerts.html">Alerts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hov" href="forecast.html">Forecast</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hov" href="maps.html">Maps</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hov" href="history.html">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hov" href="tips.html">Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hov" href="subscriptions.html">Subscriptions</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle hov" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Join us</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="signup.html">Sign up</a></li>
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="btn btn-outline-primary">Light Mode</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Alerts Content -->
+    <div class="container mt-5">
+        <h2 style="color: var(--text-color);" class="text-center mb-4">Weather Alerts</h2>
+
+        <!-- Subscribe to Alerts -->
+        <div class="card border-2 border-white rounded-5 mb-4" style="background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.7) 50%);">
+            <div class="card-body" style="color: var(--text-color);">
+                <h5 class="card-title" style="color: var(--text-color);">Subscribe to Alerts</h5>
+                <form id="alertForm">
+                    <div class="mb-3">
+                        <label for="alertCity" class="form-label" style="color: var(--text-color);">City</label>
+                        <input type="text" class="form-control" id="alertCity" placeholder="Enter city" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" style="color: var(--text-color);">Alert Types</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rainAlert">
+                            <label class="form-check-label" for="rainAlert" style="color: var(--text-color);">Rain</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="stormAlert">
+                            <label class="form-check-label" for="stormAlert" style="color: var(--text-color);">Storm</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="heatAlert">
+                            <label class="form-check-label" for="heatAlert" style="color: var(--text-color);">Heat Wave</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Active Alerts -->
+        <div class="card border-2 border-white rounded-5" style="background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.7) 50%);">
+            <div class="card-body" style="color: var(--text-color);">
+                <h5 class="card-title" style="color: var(--text-color);">Active Alerts</h5>
+                <div id="alertsList">
+                    <!-- Alerts populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', loadAlerts);
+
+        function loadAlerts() {
+            // Simulate active alerts
+            const alerts = [
+                { city: 'New York', type: 'Rain', message: 'Heavy rain expected in the next 2 hours.' },
+                { city: 'London', type: 'Storm', message: 'Thunderstorm warning.' }
+            ];
+            const container = document.getElementById('alertsList');
+            container.innerHTML = '';
+            alerts.forEach(alert => {
+                const alertDiv = `
+                    <div class="alert alert-warning" role="alert">
+                        <strong>${alert.city} - ${alert.type}:</strong> ${alert.message}
+                        <button class="btn btn-sm btn-danger ms-2" onclick="dismissAlert('${alert.city}')">Dismiss</button>
+                    </div>
+                `;
+                container.innerHTML += alertDiv;
+            });
+        }
+
+        document.getElementById('alertForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const city = document.getElementById('alertCity').value;
+            const rain = document.getElementById('rainAlert').checked;
+            const storm = document.getElementById('stormAlert').checked;
+            const heat = document.getElementById('heatAlert').checked;
+
+            // Simulate subscription
+            alert(`Subscribed to alerts for ${city}!`);
+            this.reset();
+        });
+
+        function dismissAlert(city) {
+            alert(`Alert for ${city} dismissed.`);
+            loadAlerts(); // Refresh
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather app</title>
+    <link rel="stylesheet" href="weather.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script src="theme.js"></script>
+    <script src="chatbot.js"></script>
+</head>
+  <body>
+    <!-- Chatbot UI -->
+<div id="chatbot-container">
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbot-toggle" class="btn btn-primary rounded-circle shadow-lg">
+        <i class="bi bi-robot"></i>
+    </button>
+    
+    <!-- Chat Window -->
+    <div id="chat-window" class="card shadow-lg">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h6 class="mb-0"><i class="bi bi-robot me-2"></i>WeatherBot</h6>
+            <button id="chat-close" class="btn btn-sm btn-outline-light">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <div class="card-body" id="chat-messages" style="height: 300px; overflow-y: auto;">
+            <!-- Messages will appear here -->
+            <div class="message bot-message">
+                <div class="message-content">
+                    <i class="bi bi-robot me-2"></i>Hi! I'm WeatherBot. Ask me anything about weather!
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="input-group">
+                <input type="text" id="chat-input" class="form-control" placeholder="Ask about weather..." maxlength="200">
+                <button id="chat-send" class="btn btn-primary">
+                    <i class="bi bi-send"></i>
+                </button>
+            </div>
+            <small class="text-muted mt-1 d-block" id="typing-indicator" style="display: none;">
+                <i class="bi bi-three-dots"></i> WeatherBot is typing...
+            </small>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Chatbot Styles */
+#chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+#chatbot-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+#chatbot-toggle:hover {
+    transform: scale(1.1);
+}
+
+#chat-window {
+    display: none;
+    width: 350px;
+    max-width: 90vw;
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+}
+
+.message {
+    margin-bottom: 15px;
+    display: flex;
+}
+
+.message.user-message {
+    justify-content: flex-end;
+}
+
+.message.bot-message {
+    justify-content: flex-start;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    word-wrap: break-word;
+}
+
+.user-message .message-content {
+    background-color: #007bff;
+    color: white;
+}
+
+.bot-message .message-content {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #dee2e6;
+}
+
+#typing-indicator {
+    font-style: italic;
+}
+
+@media (max-width: 576px) {
+    #chat-window {
+        width: 90vw;
+        bottom: 70px;
+    }
+    
+    #chatbot-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+</style>
+
+<script src="chatbot.js"></script>
+
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><i class="bi bi-cloud-haze2-fill"></i> Weather</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                onclick=" location.reload()"
+                id="home"
+                class="nav-link active hov"
+                aria-current="page"
+                href="wether.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hov" href="about_us.html"
+                >About us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hov" href="dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hov" href="favorites.html">Favorites</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hov" href="comparison.html">Comparison</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hov" href="feedback.html">Feedback</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hov" href="settings.html">Settings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hov" href="alerts.html">Alerts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hov" href="forecast.html">Forecast</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hov" href="maps.html">Maps</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hov" href="history.html">History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hov" href="tips.html">Tips</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hov" href="subscriptions.html">Subscriptions</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle hov"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Join us
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="signup.html"
+                    >Sign up</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="login.html"
+                    >Login</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex me-3" role="search">
+            <input
+              id="input"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search city"
+              aria-label="Search"
+            />
+            <button id="search" class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+          <button id="theme-toggle" class="btn btn-outline-primary">Light Mode</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- *******************cards*********** -->
+
+    <!-- card 1 -->
+    <div class="container d-flex mt-5 justify-content-center">
+      <div class="row justify-content-center">
+        <div
+          class="card me-5 mt-3 col-sm-6 border-2 border-white rounded-5 zoom"
+          style="
+            transition: ease-in-out 0.3s;
+            width: 18rem;
+            background: linear-gradient(
+              to top,
+              rgba(0, 0, 0, 0.6) 50%,
+              rgba(0, 0, 0, 0.7) 50%
+            );
+          "
+        >
+          <div class="card-body">
+            <h5 id="firstch" class="text-center card-title" style="color: var(--text-color);">
+              Temperature
+            </h5>
+            <p id="temp" class="card-text mt-4">Temp :</p>
+            <p id="latitude" class="card-text">Latitude :</p>
+            <p id="longitude" class="card-text">Longitude :</p>
+            <p id="humidity" class="card-text">Humidity :</p>
+        </div>
+        </div>
+
+        <!-- card 2 -->
+
+        <div
+          class="card me-5 mt-3 col-sm-6 border-2 border-white rounded-5"
+          id="zoom2"
+          style="
+            transition: ease-in-out 0.3s;
+            width: 21rem;
+            background: linear-gradient(
+              to top,
+              rgba(0, 0, 0, 0.6) 50%,
+              rgba(0, 0, 0, 0.7) 50%
+            );
+          "
+        >
+          <div class="card-body">
+            <h5 id="location" class="card-title text-center" style="color: var(--text-color);">
+              Location
+            </h5>
+
+            <p id="Country" class="card-text mt-4">Country :</p>
+            <p id="region" class="card-text">Region :</p>
+            <p id="timezone" class="card-text">Timezone :</p>
+            <p id="localtime" class="card-text">Localtime :</p>
+          </div>
+        </div>
+
+        <!-- card 3 -->
+        <div
+          class="card me-3 mt-3 col-sm-6 border-2 border-white rounded-5 zoom"
+          style="
+            transition: ease-in-out 0.3s;
+            width: 18rem;
+            background: linear-gradient(
+              to top,
+              rgba(0, 0, 0, 0.6) 50%,
+              rgba(0, 0, 0, 0.7) 50%
+            );
+          "
+        >
+          <div class="card-body">
+            <h5 class="card-title text-center" style="color: var(--text-color);">Wind info</h5>
+            <p id="wind_speed" class="card-text mt-4">
+              Wind_speed :
+            </p>
+            <p id="pressure" class="card-text">Pressure :</p>
+            <p id="visibility" class="card-text">Visibility :</p>
+            <p id="wind_degree" class="card-text">Wind_degree :</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recently searched card -->
+    <div
+      class="mb-3 card border-1 border-white rounded-4 container text-center p-3"
+      style="
+        width: 49rem;
+        margin-top: 80px;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.6) 50%,
+          rgba(0, 0, 0, 0.7) 50%
+        );
+      "
+    >
+      <h5 style="color: var(--text-color);">Recently searched</h5>
+      <div class="row mt-4" style="color: var(--text-color);">
+        <div class="col">Sr no.</div>
+        <div class="col">Place</div>
+        <div class="col">Temp</div>
+        <div class="col">Humidity</div>
+      </div>
+
+      <div class="row mt-3" style="color: var(--text-color);">
+        <div class="col">-</div>
+        <div class="col">-</div>
+        <div class="col">-</div>
+        <div class="col">-</div>
+      </div>
+
+      <div class="row" style="color: var(--text-color);">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+
+      <div class="row" style="color: var(--text-color);">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+
+      <div class="row" style="color: var(--text-color);">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div>
+        <button
+          type="button"
+          class="btn btn-secondary p-1 mt-3"
+          onclick="clr() ,location.reload()"
+        >
+          clear
+        </button>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="wether.js"></script>
+  </body>
+</html>
